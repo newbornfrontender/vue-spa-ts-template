@@ -1,0 +1,8 @@
+{
+  "name": "vue-spa-ts-template",
+  "version": "0.0.1",
+  "description": "TypeScript шаблон на webpack 4 для Vue SPA",
+  "repository": "https://github.com/newbornfrontender/vue-spa-ts-template.git",
+  "author": "Infant Frontender <newbornfrontender@gmail.com>",
+  "license": "MIT"
+}
