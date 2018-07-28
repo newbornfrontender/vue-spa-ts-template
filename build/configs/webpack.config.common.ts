@@ -1,26 +1,34 @@
 'use strict';
 
+// -----------------------------------------------------------------------------
+
 import { Configuration } from 'webpack';
 
+// -----------------------------------------------------------------------------
+
 import WebpackMerge from 'webpack-merge';
+
+// -----------------------------------------------------------------------------
+
+import DefinePlugin from '../parts/plugins/DefinePlugin';
+// import EnvironmentPlugin from '../parts/plugins/EnvironmentPlugin';
+
+const plugins: Configuration = WebpackMerge(
+  DefinePlugin,
+  // EnvironmentPlugin,
+);
+
+// -----------------------------------------------------------------------------
 
 import mode from '../parts/mode';
 import entry from '../parts/entry';
 
-import WebpackDotenvPlugin from '../parts/plugins/WebpackDotenvPlugin';
-// import EnvironmentPlugin from '../parts/plugins/EnvironmentPlugin';
-import DefinePlugin from '../parts/plugins/DefinePlugin';
-
-const plugins: Configuration = WebpackMerge(
-  WebpackDotenvPlugin,
-  // EnvironmentPlugin,
-  DefinePlugin,
-);
-
-const config: Configuration = WebpackMerge(
+const buildConfig: Configuration = WebpackMerge(
   mode,
   entry,
   plugins,
 );
 
-export default config;
+// -----------------------------------------------------------------------------
+
+export default buildConfig;
