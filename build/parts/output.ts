@@ -1,13 +1,37 @@
 'use strict';
 
-import { Configuration } from 'webpack';
+// -----------------------------------------------------------------------------
+
 import { resolve } from 'path';
 
-const config: Configuration = {
+import { Configuration } from '../definitions/configs/Output';
+
+// -----------------------------------------------------------------------------
+
+import { config } from 'dotenv';
+
+config({
+  encoding: 'utf-8',
+  path: resolve(__dirname, '../../.env/options'),
+});
+
+// -----------------------------------------------------------------------------
+
+const partConfig: Configuration = {
   output: {
     path: resolve(__dirname, '../../dist'),
-    filename: 'js/[name].js',
+    filename: () => {
+      if (process.env.NODE_ENV === 'production') {
+        return 'js/[name].[contenthash].js';
+      };
+
+      return 'js/[name].js';
+    },
+    hashDigest: process.env.HASH_DIGEST || 'hex',
+    hashDigestLength: Number(process.env.HASH_DIGEST_LENGTH) || 9,
   },
 };
 
-export default config;
+// -----------------------------------------------------------------------------
+
+export default partConfig;
