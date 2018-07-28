@@ -7,14 +7,14 @@ import WebpackMerge from 'webpack-merge';
 import mode from '../parts/mode';
 import entry from '../parts/entry';
 
+import WebpackDotenvPlugin from '../parts/plugins/WebpackDotenvPlugin';
 // import EnvironmentPlugin from '../parts/plugins/EnvironmentPlugin';
 import DefinePlugin from '../parts/plugins/DefinePlugin';
-import WebpackDotenvPlugin from '../parts/plugins/WebpackDotenvPlugin';
 
 const plugins: Configuration = WebpackMerge(
+  WebpackDotenvPlugin,
   // EnvironmentPlugin,
   DefinePlugin,
-  WebpackDotenvPlugin,
 );
 
 const config: Configuration = WebpackMerge(
