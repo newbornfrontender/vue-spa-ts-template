@@ -10,12 +10,24 @@ import WebpackMerge from 'webpack-merge';
 
 // -----------------------------------------------------------------------------
 
+import cssLoader from '../parts/module/rules/css-loader';
+
+const rules: Configuration = WebpackMerge(
+  cssLoader,
+);
+
+const module: Configuration = WebpackMerge(
+  rules,
+);
+
+// -----------------------------------------------------------------------------
+
 import DefinePlugin from '../parts/plugins/DefinePlugin';
-// import EnvironmentPlugin from '../parts/plugins/EnvironmentPlugin';
+import MiniCssExtractPlugin from '../parts/plugins/MiniCssExtractPlugin';
 
 const plugins: Configuration = WebpackMerge(
   DefinePlugin,
-  // EnvironmentPlugin,
+  MiniCssExtractPlugin,
 );
 
 // -----------------------------------------------------------------------------
@@ -26,6 +38,7 @@ import entry from '../parts/entry';
 const buildConfig: Configuration = WebpackMerge(
   mode,
   entry,
+  module,
   plugins,
 );
 
