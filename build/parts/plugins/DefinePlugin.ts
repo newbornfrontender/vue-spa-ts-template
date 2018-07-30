@@ -4,13 +4,7 @@
 
 import { Configuration, DefinePlugin } from 'webpack';
 
-// -----------------------------------------------------------------------------
-
-declare const process: {
-  env: {
-    NODE_ENV: string;
-  };
-};
+import process from '../../definitions/process';
 
 // -----------------------------------------------------------------------------
 
