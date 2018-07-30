@@ -2,12 +2,14 @@
 
 // -----------------------------------------------------------------------------
 
-import { Configuration } from '../definitions/configs/Mode';
+import process from '../definitions/process';
+import { Configuration } from 'webpack';
+import { modeValue } from '../modules/utils/process/env';
 
 // -----------------------------------------------------------------------------
 
 const partConfig: Configuration = {
-  mode: process.env.NODE_ENV || 'development',
+  mode: modeValue(process.env.NODE_ENV),
 };
 
 // -----------------------------------------------------------------------------

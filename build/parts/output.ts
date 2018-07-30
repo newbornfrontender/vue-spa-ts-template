@@ -2,33 +2,41 @@
 
 // -----------------------------------------------------------------------------
 
+import process from '../definitions/process';
+import { config } from 'dotenv';
 import { resolve } from 'path';
-
-import { Configuration } from '../definitions/configs/Output';
+import { Configuration } from 'webpack';
+import {
+  hashDigestValue,
+  hashDigestLengthValue,
+} from '../modules/utils/process/env';
+import {
+  hashDigestLog,
+  hashDigestLengthLog,
+} from '../modules/utils/console/log';
 
 // -----------------------------------------------------------------------------
 
-import { config } from 'dotenv';
-
 config({
   encoding: 'utf-8',
-  path: resolve(__dirname, '../../.env/options'),
+  path: resolve(__dirname, '../../.env/build/production'),
 });
+
+// -----------------------------------------------------------------------------
+
+hashDigestLog();
+hashDigestLengthLog();
 
 // -----------------------------------------------------------------------------
 
 const partConfig: Configuration = {
   output: {
     path: resolve(__dirname, '../../dist'),
-    filename: () => {
-      if (process.env.NODE_ENV === 'production') {
-        return 'js/[name].[contenthash].js';
-      };
-
-      return 'js/[name].js';
-    },
-    hashDigest: process.env.HASH_DIGEST || 'hex',
-    hashDigestLength: Number(process.env.HASH_DIGEST_LENGTH) || 9,
+    filename: (process.env.NODE_ENV === 'production') ?
+      'js/[name].[contenthash].js' :
+      'js/[name].js',
+    hashDigest: hashDigestValue(process.env.HASH_DIGEST),
+    hashDigestLength: hashDigestLengthValue(process.env.HASH_DIGEST_LENGTH),
   },
 };
 
