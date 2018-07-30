@@ -1,10 +1,10 @@
 {
   "name": "vue-spa-ts-template",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "TypeScript шаблон на webpack 4 для Vue SPA",
   "scripts": {
     "serve": "cross-env NODE_ENV=development webpack --config build/configs/webpack.development.config.ts",
-    "build": "cross-env NODE_ENV=production webpack --config build/configs/webpack.production.config.ts",
+    "build": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"build/tsconfig.json\" webpack --config build/configs/webpack.production.config.ts",
     "test": "cross-env NODE_ENV=test webpack --config build/configs/webpack.test.config.ts"
   },
   "repository": "https://github.com/newbornfrontender/vue-spa-ts-template.git",
@@ -20,7 +20,9 @@
     "css-loader": "^1.0.0",
     "dotenv": "^6.0.0",
     "mini-css-extract-plugin": "^0.4.1",
+    "ts-loader": "^4.4.2",
     "ts-node": "^7.0.0",
+    "tsconfig-paths": "^3.5.0",
     "typescript": "^3.1.0-dev.20180727",
     "webpack": "^4.16.3",
     "webpack-cli": "^3.1.0",
