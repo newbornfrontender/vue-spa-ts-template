@@ -10,9 +10,11 @@ import WebpackMerge from 'webpack-merge';
 
 // -----------------------------------------------------------------------------
 
+import tsLoader from '../parts/module/rules/ts-loader';
 import cssLoader from '../parts/module/rules/css-loader';
 
 const rules: Configuration = WebpackMerge(
+  tsLoader,
   cssLoader,
 );
 
