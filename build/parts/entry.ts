@@ -10,7 +10,7 @@ import { resolve } from 'path';
 
 const partConfig: Configuration = {
   entry: {
-    index: resolve(__dirname, '../../src/index.js'),
+    index: resolve(__dirname, '../../src/index.ts'),
   },
 };
 
