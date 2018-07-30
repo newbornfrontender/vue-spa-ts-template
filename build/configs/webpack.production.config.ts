@@ -18,7 +18,7 @@ const productionConfig: Configuration = WebpackMerge(
 
 // -----------------------------------------------------------------------------
 
-import commonConfig from './webpack.config.common';
+import commonConfig from './webpack.common.config';
 
 const buildConfig: Configuration = WebpackMerge(
   commonConfig,
