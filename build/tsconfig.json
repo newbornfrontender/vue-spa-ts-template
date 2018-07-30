@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "types":[
+      "dotenv",
+      "mini-css-extract-plugin",
+      "node",
+      "webpack",
+      "webpack-merge",
+    ],
+    "typeRoots": [
+      "./typings",
+    ],
+  },
+}
