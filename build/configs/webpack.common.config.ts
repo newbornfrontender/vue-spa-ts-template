@@ -29,7 +29,7 @@ import MiniCssExtractPlugin from '../parts/plugins/MiniCssExtractPlugin';
 
 const plugins: Configuration = WebpackMerge(
   DefinePlugin,
-  MiniCssExtractPlugin,
+  // MiniCssExtractPlugin,
 );
 
 // -----------------------------------------------------------------------------
