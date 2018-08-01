@@ -2,9 +2,15 @@
 
 // -----------------------------------------------------------------------------
 
-import process from '../definitions/process';
 import { Configuration } from 'webpack';
+import process from '../definitions/process';
+
+import { modeLog } from '../modules/utils/console/log';
 import { modeValue } from '../modules/utils/process/env';
+
+// -----------------------------------------------------------------------------
+
+modeLog();
 
 // -----------------------------------------------------------------------------
 
