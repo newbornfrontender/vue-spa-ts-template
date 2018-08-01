@@ -2,7 +2,8 @@
 
 // -----------------------------------------------------------------------------
 
-import { Configuration } from 'webpack';
+// import { Configuration } from 'webpack';
+import CustomConfiguration from '../../../typings/webpack/RuleSetRule';
 
 import process from '../../../definitions/process';
 
@@ -12,17 +13,20 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 // -----------------------------------------------------------------------------
 
-const partConfig: Configuration = {
+const partConfig: CustomConfiguration = {
   module: {
     rules: [{
       test: /\.css$/,
-      // include,
-      // exclude,
+      exclude: /(node_modules|bower_components)/,
       use: [
-        process.env.NODE_ENV === 'production' ?
+        (process.env.NODE_ENV === 'production') ?
           MiniCssExtractPlugin.loader :
-          'vue-style-loader',
-        'css-loader',
+          {
+            loader: 'vue-style-loader',
+          },
+        {
+          loader: 'css-loader',
+        },
       ],
     }],
   },
