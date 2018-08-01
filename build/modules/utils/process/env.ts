@@ -2,7 +2,7 @@
 
 const getModeValue = (value: string): 'development' | 'production' | 'none' => {
   switch (value) {
-    case 'development' || 'test': return 'development';
+    case 'development': return value;
     case 'production': return value;
     case 'none': return value;
     default: 'development';
