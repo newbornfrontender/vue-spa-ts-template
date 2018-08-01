@@ -2,24 +2,27 @@
 
 // -----------------------------------------------------------------------------
 
-import process from '../definitions/process';
-import { config } from 'dotenv';
-import { resolve } from 'path';
 import { Configuration } from 'webpack';
-import {
-  hashDigestValue,
-  hashDigestLengthValue,
-} from '../modules/utils/process/env';
+import { resolve } from 'path';
+
+import process from '../definitions/process';
+
 import {
   hashDigestLog,
   hashDigestLengthLog,
 } from '../modules/utils/console/log';
+import {
+  hashDigestValue,
+  hashDigestLengthValue,
+} from '../modules/utils/process/env';
 
 // -----------------------------------------------------------------------------
 
+import { config } from 'dotenv';
+
 config({
   encoding: 'utf-8',
-  path: resolve(__dirname, '../../.env/build/production'),
+  path: resolve(__dirname, '../..', '.env/build/production'),
 });
 
 // -----------------------------------------------------------------------------
@@ -31,7 +34,7 @@ hashDigestLengthLog();
 
 const partConfig: Configuration = {
   output: {
-    path: resolve(__dirname, '../../dist'),
+    path: resolve(__dirname, '../..', 'dist'),
     filename: (process.env.NODE_ENV === 'production') ?
       'js/[name].[contenthash].js' :
       'js/[name].js',
